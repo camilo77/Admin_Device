@@ -1,0 +1,62 @@
+body{
+	background: #C7C7C8;
+}
+.section-register{
+	max-width: 800px;
+	margin: 40px auto;
+	background: white;
+	border-radius: 10px;
+}
+.titulo-register{
+	max-width: 400px;
+	margin: 30px auto;
+	padding: 5px; 
+}
+.form-register{
+	max-width: 600px;
+    padding: 15px;
+    margin: 0 auto;
+}
+.form-register .form-control{
+	font-size: 16px;
+    height: auto;
+    padding: 10px;
+}
+.form-register .control-label{
+	text-align: left;
+}
+.usuario-label{
+	color: white;
+}
+.table-device th h3{
+	text-align: center;
+	font-weight: bold;
+}
+.table-device th{
+	width: 25%;
+}
+.table-device img{
+	width: 100px;
+	height: 100px;
+	display: block;
+	margin: auto auto;
+	position: relative;
+	top: 0px;
+}
+.center-td{
+	position: relative;
+	margin: auto;
+	top: 50px;
+}
+.div-scroll{
+	overflow: auto;
+	max-height: 450px;
+}
+.table-device thead{
+	
+	z-index: 1;
+}
+.table-device tbody{
+	position: relative;
+	top: 100px;
+}

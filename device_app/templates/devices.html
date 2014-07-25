@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% block title %}Dispositivos{% endblock %}
+{%block head %}
+	<link rel="stylesheet" href="/static/misEstilos/estilos2.css" />
+	<link rel="stylesheet" href="/static/misEstilos/estiloBotonEstado.css" />
+{%endblock%}
+{% block botonIndice %}
+	<label class="usuario-label">Sebastian</label>
+	<button type="button" class="btn btn-default">
+  		<span class="glyphicon glyphicon-chevron-left"></span> Salir
+	</button>
+{% endblock %}
+{% block contenido %}
+	<section class="section-register div-scroll">
+		<div class="container-fluid">
+			<table class="table table-striped table-device">
+				<thead>
+				<tr>
+					<th><h3>Dispositivos</h3></th>
+					<th><h3>Estado</h3></th>
+					<th><h3>Detalles</h3></th>
+					<th><h3><a href="" class="btn btn-lg btn-primary ">Nuevo Dispositivo</a></h3></th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>
+						<img src="/static/images/computador.jpg" class="img-circle">
+						<label>camilo-PC</label>
+					</td>
+					<td>
+						<div class="center-td">
+							<div class="onoffswitch">
+						    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" {{estado}}>
+						    <label class="onoffswitch-label" for="myonoffswitch">
+						        <span class="onoffswitch-inner"></span>
+						        <span class="onoffswitch-switch"></span>
+						    </label>
+							</div>
+						</div>
+					</td>
+					<td>
+						<div class="center-td">
+							<h4><a>Detalles</a></h4>
+						</div>
+					</td>
+					<td>
+						<div class="center-td">	
+							<a href="" class="btn btn-primary ">Ver dispositivo</a>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<img src="/static/images/celular.png" class="img-circle">
+						<label>phone 1</label>
+					</td>
+					<td>
+						<div class="center-td">
+							<div class="onoffswitch">
+						    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" >
+						    <label class="onoffswitch-label" for="myonoffswitch">
+						        <span class="onoffswitch-inner"></span>
+						        <span class="onoffswitch-switch"></span>
+						    </label>
+							</div>
+						</div>
+					</td>
+					<td>
+						<div class="center-td">
+							<h4><a>Detalles</a></h4>
+						</div>
+					</td>
+					<td>
+						<div class="center-td">	
+							<a href="" class="btn btn-primary ">Ver dispositivo</a>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<img src="/static/images/tablet.jpg" class="img-circle">
+						<label>tablet-julian</label>
+					</td>
+					<td>
+						<div class="center-td">
+							<div class="onoffswitch">
+						    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" {{estado}}>
+						    <label class="onoffswitch-label" for="myonoffswitch">
+						        <span class="onoffswitch-inner"></span>
+						        <span class="onoffswitch-switch"></span>
+						    </label>
+							</div>
+						</div>
+					</td>
+					<td>
+						<div class="center-td">
+							<h4><a>Detalles</a></h4>
+						</div>
+					</td>
+					<td>
+						<div class="center-td">	
+							<a href="" class="btn btn-primary ">Ver dispositivo</a>
+						</div>
+					</td>
+				</tr>
+				</tbody>
+				<tfoot>
+				</tfoot>
+			</table>
+		</div>
+	</section>
+{% endblock %}

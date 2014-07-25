@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Inicio{% endblock %}
+{% block botonIndice %}
+	<button type="button" class="btn btn-default">
+  		<span class="glyphicon glyphicon-chevron-left"></span> Registrarse
+	</button>
+{% endblock %}
+{% block contenido %}
+	<section>
+		<div class="container log">
+		    <div class="row">
+		    	<div class="col-md-6">
+		    		<img src="/static/images/computadores.jpg" >
+		    	</div>
+		        <div class="col-md-6">
+		            <h1 class="titulo">Admin Application</h1>
+		            <h1 class="descripcion">Estado de tus aplicaciones estes donde estes</h1>
+		            <h1 class="login-title">Ingresar</h1>
+	                <form class="form-signin">
+		                <input type="text" class="form-control" placeholder="Usuario" required autofocus>
+		                <input type="password" class="form-control" placeholder="Contraseña" required>
+		                <button class="btn btn-lg btn-primary btn-block" type="submit">
+		                    Entrar
+		                </button>
+	                </form>
+		        </div>
+		    </div>
+		</div>		
+	</section>
+{% endblock %}

@@ -1,0 +1,53 @@
+body{
+	text-align: center;
+}
+header{	
+	padding: 30px;
+	background-color: #507CD3;
+}
+header h1{
+	color: white;
+	margin: 0px;
+	font-weight: bold;
+}
+.indice{
+	margin-top: 5px;
+	text-align: right;
+}
+section img{
+	position: relative;
+	width: 450px;
+	height: 300px;
+	top: 80px;
+}
+
+.log{
+	margin: 40px;
+	padding: 10px;
+}
+.titulo{
+	border-radius: 10px;
+	background-color: #507CD3;
+	color: white;
+	font-size: 35px;
+}
+.descripcion{
+	color: #555;
+    font-size: 25px;
+    font-weight: 400;
+    display: block;	
+}
+.form-signin
+{
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.form-signin .form-control
+{
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    
+}
