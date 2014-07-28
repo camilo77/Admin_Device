@@ -5,13 +5,15 @@
 	<link rel="stylesheet" href="/static/misEstilos/estiloBotonEstado.css" />
 {%endblock%}
 {% block botonIndice %}
-	<label class="usuario-label">Sebastian</label>
+	{% if user.is_authenticated %}
+	<label class="usuario-label">{{user.username}}</label>
+	{%endif%}
 	<button type="button" class="btn btn-default">
   		<span class="glyphicon glyphicon-chevron-left"></span> Salir
 	</button>
 {% endblock %}
 {% block contenido %}
-	<section class="section-register div-scroll">
+	<section class="section-register section-devices">
 		<div class="container-fluid">
 			<table class="table table-striped table-device">
 				<thead>
@@ -23,10 +25,12 @@
 				</tr>
 				</thead>
 				<tbody>
+				{% if devices %}
+				{%for device in devices%}
 				<tr>
 					<td>
-						<img src="/static/images/computador.jpg" class="img-circle">
-						<label>camilo-PC</label>
+						<img src="/static/images/{{device.tipo}}" class="img-circle">
+						<label>{{device.name}}</label>
 					</td>
 					<td>
 						<div class="center-td">
@@ -50,60 +54,8 @@
 						</div>
 					</td>
 				</tr>
-				<tr>
-					<td>
-						<img src="/static/images/celular.png" class="img-circle">
-						<label>phone 1</label>
-					</td>
-					<td>
-						<div class="center-td">
-							<div class="onoffswitch">
-						    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" >
-						    <label class="onoffswitch-label" for="myonoffswitch">
-						        <span class="onoffswitch-inner"></span>
-						        <span class="onoffswitch-switch"></span>
-						    </label>
-							</div>
-						</div>
-					</td>
-					<td>
-						<div class="center-td">
-							<h4><a>Detalles</a></h4>
-						</div>
-					</td>
-					<td>
-						<div class="center-td">	
-							<a href="" class="btn btn-primary ">Ver dispositivo</a>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<img src="/static/images/tablet.jpg" class="img-circle">
-						<label>tablet-julian</label>
-					</td>
-					<td>
-						<div class="center-td">
-							<div class="onoffswitch">
-						    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" {{estado}}>
-						    <label class="onoffswitch-label" for="myonoffswitch">
-						        <span class="onoffswitch-inner"></span>
-						        <span class="onoffswitch-switch"></span>
-						    </label>
-							</div>
-						</div>
-					</td>
-					<td>
-						<div class="center-td">
-							<h4><a>Detalles</a></h4>
-						</div>
-					</td>
-					<td>
-						<div class="center-td">	
-							<a href="" class="btn btn-primary ">Ver dispositivo</a>
-						</div>
-					</td>
-				</tr>
+				{% endfor %}
+				{% endif%}
 				</tbody>
 				<tfoot>
 				</tfoot>

@@ -14,11 +14,11 @@
 		<div class=	"container-fluid">
 			<div class="row">
 				<h1 class="titulo titulo-register" >Nueva Aplicación</h1>
-				<form class="form-horizontal form-register" role="form">
+				<form class="form-horizontal form-register" role="form" method='POST'>{% csrf_token %}
 					<div class="form-group">
 						<label for="inputName" class="col-sm-2 control-label">Nombre:</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="inputName" placeholder="Nombre" required>
+							<input type="text" class="form-control" id="id_nombre" name="nombre" placeholder="Nombre" required>
 						</div>
 					</div>
 					<button type="submit" class="btn btn-lg btn-primary btn-block">Enviar</button>

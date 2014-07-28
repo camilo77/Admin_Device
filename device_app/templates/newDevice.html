@@ -14,34 +14,29 @@
 		<div class=	"container-fluid">
 			<div class="row">
 				<h1 class="titulo titulo-register" >Nuevo Dispositivo</h1>
-				<form class="form-horizontal form-register" role="form">
+				<form class="form-horizontal form-register" role="form" method='POST'>{% csrf_token %}
 					<div class="form-group">
 						<label for="inputName" class="col-sm-4 control-label">Nombre:</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="inputName" placeholder="Nombre" required>
+							<input type="text" class="form-control" id="id_nombre" name="nombre" placeholder="Nombre" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="inputType" class="col-sm-4 control-label">Tipo:</label>
 						<div class="col-sm-8">
-							<select class="form-control" id ="inputType" required>
-								<option>PC</option>
-								<option>Celular</option>
-								<option>Tableta</option>
-							</select>
+							{{formulario.tipo}}
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="inputIP" class="col-sm-4 control-label">Dirección IP:</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="inputIP" placeholder="Dirección IP" required>
+							<input type="text" class="form-control" id="id_ip" name ="ip" placeholder="Dirección IP" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="inputApp" class="col-sm-4 control-label">Instalar aplicación:</label>
 						<div class="col-sm-8">
-							<select class="form-control" id="inputApp">
-							</select>
+							{{formulario.aplicaciones}}
 						</div>
 					</div>
 					<button type="submit" class="btn btn-lg btn-primary btn-block">Enviar</button>

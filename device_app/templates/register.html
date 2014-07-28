@@ -4,43 +4,47 @@
 	<link rel="stylesheet" href="/static/misEstilos/estilos2.css" />
 {%endblock%}
 {% block botonIndice %}
-	<button type="button" class="btn btn-default">
+	<a href="{% url 'device_app:inicio' %}" class="btn btn-default">
   		<span class="glyphicon glyphicon-chevron-left"></span> Cancelar
-	</button>
+	</a>
 {% endblock %}
 {% block contenido %}
 	<section class="section-register">
 		<div class=	"container-fluid">
 			<div class="row">
 				<h1 class="titulo titulo-register" >Nuevo Usuario</h1>
-				<form class="form-horizontal form-register" role="form">
+				<form class="form-horizontal form-register" role="form" method='POST'>{% csrf_token %}
 					<div class="form-group">
-						<label for="inputName" class="col-sm-2 control-label">Nombre:</label>
+						<label for="id_nombre" class="col-sm-2 control-label">Nombre:</label>
 						<div class="col-sm-10">
-						<input type="text" class="form-control" id="inputName" placeholder="Nombre" required>
+						<input type="text" class="form-control" id="id_nombre" name="nombre" placeholder="Nombre" required>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputLastName" class="col-sm-2 control-label">Apellido:</label>
+						<label for="id_apellido" class="col-sm-2 control-label">Apellido:</label>
 						<div class="col-sm-10">
-						<input type="text" class="form-control" id="inputLastName" placeholder="Apellido" required>
+						<input type="text" class="form-control" id="id_apellido" name="apellido" placeholder="Apellido" required>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputEmail" class="col-sm-2 control-label">Correo:</label>
+						<label for="id_correo" class="col-sm-2 control-label">Correo:</label>
 						<div class="col-sm-10">
-						<input type="email" class="form-control" id="inputEmail" placeholder="Correo electrónico" required>
+						<input type="email" class="form-control" id="id_correo" name="correo" placeholder="Correo electrónico" required>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputPassword" class="col-sm-2 control-label">Contraseña:</label>
+						<label for="id_usuario" class="col-sm-2 control-label">Usuario:</label>
+						<div class="col-sm-10">
+						<input type="text" class="form-control" id="id_usuario" name="usuario" placeholder="Nombre de usuario" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="id_contrasena" class="col-sm-2 control-label">Contraseña:</label>
 					  	<div class="col-sm-10">
-					  	<input type="password" class="form-control" id="inputPassword" placeholder="Contraseña" required>
+					  	<input type="password" class="form-control" id="id_contrasena" name="contrasena" placeholder="Contraseña" required>
 					  </div>
 					</div>
-						
 						  <button type="submit" class="btn btn-lg btn-primary btn-block">Enviar</button>
-				
 				</form>
 			</div>
 		</div>
