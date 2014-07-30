@@ -38,17 +38,33 @@ def register(request):
 		form = NewUser(request.POST)
 		if form.is_valid():
 			username = form.cleaned_data["usuario"]
-			password = form.cleaned_data["contrasena"]
-			email = form.cleaned_data["correo"]
-			first_name = form.cleaned_data["nombre"]
-			last_name = form.cleaned_data["apellido"]
-			user = User.objects.create_user(username, email, password)
-			user.first_name = first_name
-			user.last_name = last_name
 
-			user.save()
+			if not User.objects.filter(username = username):
+				
+				password = form.cleaned_data["contrasena"]
+				email = form.cleaned_data["correo"]
+				first_name = form.cleaned_data["nombre"]
+				last_name = form.cleaned_data["apellido"]
 
-			return HttpResponseRedirect(reverse('device_app:inicio'))  
+				user = User.objects.create_user(username, email, password)
+				user.first_name = first_name
+				user.last_name = last_name
+				user.save()
+				# toca cambiar posteriormente el retorno para que el usuario quede logeado directamente
+				return HttpResponseRedirect(reverse('device_app:inicio'))
+			else:
+				context = {
+				'formulario':form,
+				'mensaje':'El Usuario ya existe'
+				}
+				return render_to_response('register.html',context,context_instance=RequestContext(request))
+		else:
+			form = NewUser()
+			context = {
+			'formulario':form,
+			'mensaje':'Registre los datos correctamente'
+			}
+			return render_to_response('register.html',context,context_instance=RequestContext(request))
 	else:
 		form = NewUser()
 		context = {
