@@ -1,17 +1,20 @@
 from django.shortcuts import render
 from django.shortcuts import render_to_response
-from forms import NewDeviceForm, NewUser, LogForm, NewAppForm
-from django.contrib.auth.models import User
-from django.template.context import RequestContext
 from django.http import HttpResponseRedirect
+from django.template.context import RequestContext
 from django.core.urlresolvers import reverse
-from django.contrib.auth import authenticate, login
+
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+
 from models import Device, Application
+from forms import NewDeviceForm, NewUser, LogForm, NewAppForm
 
 # Create your views here.
 # ---------------------------------------------------------------------------------------------------------------------
 # ---------------------------------------------------------------------------------------------------------------------
+# login
 def inicio(request):
 	if request.method == 'POST':
 		form = LogForm(request.POST)
@@ -38,6 +41,12 @@ def inicio(request):
     	'formulario':form,
     	}
     	return render_to_response('inicio.html',context,context_instance=RequestContext(request))
+
+# ---------------------------------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------------------------
+def logOut(request):
+	logout(request)
+	return HttpResponseRedirect(reverse('device_app:inicio'))
 
 # ---------------------------------------------------------------------------------------------------------------------
 # ---------------------------------------------------------------------------------------------------------------------

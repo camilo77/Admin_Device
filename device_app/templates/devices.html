@@ -7,10 +7,10 @@
 {% block botonIndice %}
 	{% if user.is_authenticated %}
 	<label class="usuario-label">{{user.username}}</label>
-	{%endif%}
-	<button type="button" class="btn btn-default">
+	<a href="{% url 'device_app:logout'%}" class="btn btn-default">
   		<span class="glyphicon glyphicon-chevron-left"></span> Salir
-	</button>
+	</a>
+	{%endif%}
 {% endblock %}
 {% block contenido %}
 	<section class="section-register section-devices">
