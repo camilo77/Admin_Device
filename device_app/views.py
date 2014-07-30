@@ -149,7 +149,5 @@ def devices(request):
 	'estado': 'checked',
 	'devices': devices,
 	'user': request.user,
-
-	
 	}
 	return render_to_response('devices.html',context)
