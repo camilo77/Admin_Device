@@ -10,7 +10,8 @@ from django.contrib.auth.decorators import login_required
 from models import Device, Application
 
 # Create your views here.
-
+# ---------------------------------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------------------------
 def inicio(request):
 	if request.method == 'POST':
 		form = LogForm(request.POST)
@@ -38,12 +39,15 @@ def inicio(request):
     	}
     	return render_to_response('inicio.html',context,context_instance=RequestContext(request))
 
+# ---------------------------------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------------------------
 def register(request):
 	if request.method == 'POST':
 		form = NewUser(request.POST)
 		if form.is_valid():
 			username = form.cleaned_data["usuario"]
 
+			# si el usuario no existe se crea
 			if not User.objects.filter(username = username):
 				
 				password = form.cleaned_data["contrasena"]
@@ -77,7 +81,8 @@ def register(request):
 		}
 		return render_to_response('register.html',context,context_instance=RequestContext(request))
 
-
+# ---------------------------------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------------------------
 def newDevice(request):
 	if request.method == 'POST':
 		form = NewDeviceForm(request.POST)
@@ -103,6 +108,8 @@ def newDevice(request):
 		}
 		return render_to_response('newDevice.html',context, context_instance=RequestContext(request))
 
+# ---------------------------------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------------------------
 def newApplication(request):
 	if request.method == 'POST':
 		form = NewAppForm(request.POST)
@@ -124,6 +131,8 @@ def newApplication(request):
 		}
 		return render_to_response('newApplication.html',context,context_instance=RequestContext(request))
 
+# ---------------------------------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------------------------
 @login_required()
 def devices(request):
 	devices = Device.objects.all()
