@@ -25,7 +25,12 @@ def inicio(request):
 				else:
 					return HttpResponseRedirect(reverse('device_app:inicio'))
 			else:
-				return HttpResponseRedirect(reverse('device_app:inicio'))
+				form = LogForm()
+		    	context = {
+		    	'formulario':form,
+		    	'mensaje':'usuario y/o contrasena invalido'
+		    	}
+		    	return render_to_response('inicio.html',context,context_instance=RequestContext(request))
 	else:
 		form = LogForm()
     	context = {
