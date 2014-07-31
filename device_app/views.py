@@ -165,6 +165,19 @@ def newApplication(request):
 # ---------------------------------------------------------------------------------------------------------------------
 # ---------------------------------------------------------------------------------------------------------------------
 @login_required(login_url='device_app:inicio')
+def appsDevices(request):
+	devices = Device.objects.all()
+	applications = Application.objects.all()
+	context = {
+	'devices': devices,
+	'applications': applications,
+	'user': request.user,
+	}
+	return render_to_response('appsDevices.html',context)
+
+# ---------------------------------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------------------------
+@login_required(login_url='device_app:inicio')
 def devices(request):
 	devices = Device.objects.all()
 	context = {
