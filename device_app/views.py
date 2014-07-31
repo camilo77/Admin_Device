@@ -185,3 +185,14 @@ def devices(request):
 	'user': request.user,
 	}
 	return render_to_response('devices.html',context)
+<<<<<<< HEAD
+=======
+
+
+def device(request,id):
+	dispositivo = Device.objects.filter(id=id)[0]
+	context = {
+	'device':dispositivo,
+	}
+	return render_to_response('device.html',context)
+>>>>>>> bbe9d18f59a51a231a0dcb7dd29ad769984ab706

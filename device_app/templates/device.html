@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Dispositivo{% endblock %}
+{%block head %}
+	<link rel="stylesheet" href="/static/misEstilos/estilos2.css" />
+	<link rel="stylesheet" href="/static/misEstilos/estiloBotonEstado.css" />
+{%endblock%}
+{% block botonIndice %}
+	{% if user.is_authenticated %}
+	<label class="usuario-label">{{user.username}}</label>
+	<a href="{% url 'device_app:logout'%}" class="btn btn-default">
+  		<span class="glyphicon glyphicon-chevron-left"></span> Salir
+	</a>
+	{%endif%}
+{% endblock %}
+{% block contenido %}
+<section class="section-device">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-4">
+				<label class="title-device-head">Dispositivo</label>
+			</div>
+			<div class="col-md-8">
+				<label class="title-device-head">Aplicaciones</label>
+			</div>	
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				{{device.name}}
+				<img src="/static/images/{{device.tipo}}" class="img-circle">
+			</div>
+			<div class="col-md-8">
+			</div>
+		</div>
+		
+	</div>
+</section>
+{% endblock %}
