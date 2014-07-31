@@ -53,6 +53,14 @@ body{
 	overflow: auto;
 	max-height: 450px;
 }
+.section-devices2{
+	overflow: auto;
+	height: 300px;
+}
+.section-applications{
+	overflow: auto;
+	max-height: 450px;
+}
 .table-device thead{
 	
 	z-index: 1;
@@ -60,6 +68,23 @@ body{
 .table-device tbody{
 	position: relative;
 	top: 100px;
+}
+.table-devices tbody{
+	position: relative;
+	top: 300px;
+}
+.table-application tbody{
+	position: relative;
+	top: 100px;
+}
+
+.img-appsDevices a{
+  border-radius: 10%;
+}
+
+.img-appsDevices {
+	width: 50px;
+	height: 50px;
 }
 
 /*estilos para template device*/
@@ -71,11 +96,11 @@ body{
 	margin: 40px auto;
 }
 .section-device .container-fluid , .section-device .row{
-	border: solid 2px black;
+	
 }
 .title-device-head{
 	font-size: 22px;
-		border: solid 2px black;
+		
 }
 .section-device img{
 	width: 100px;
@@ -84,4 +109,12 @@ body{
 	margin: auto auto;
 	position: relative;
 	top: 0px;
+}
+.img-app{
+	border: solid 2px black;
+}
+
+/*iiiiiiiiiiiiiiiii*/
+.button-appsDevices{
+	border-radius: 100px;
 }

@@ -7,6 +7,8 @@ urlpatterns = patterns('',
 	url(r'^$', 'device_app.views.inicio', name='inicio'),
 	# registrar usuario nuevo
 	url(r'^register/$', 'device_app.views.register', name= 'register'),
+	#pagina principal - muestra apps y devices
+	url(r'^appsDevices/$', 'device_app.views.appsDevices', name= 'appsDevices'),
 	# registrar nuevo dispositivo
 	url(r'^newDevice/$', 'device_app.views.newDevice', name = 'newDevice'),
 	# registrar nueva aplicacion
