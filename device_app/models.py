@@ -25,4 +25,4 @@ class DeviceApp(models.Model):
 	status = models.CharField(max_length=10)
 
 	def __str__(self):
-		return self.device, self.aplication, self.status
+		return self.device.name +' '+ self.aplication.name	

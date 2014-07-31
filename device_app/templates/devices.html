@@ -21,7 +21,7 @@
 					<th><h3>Dispositivos</h3></th>
 					<th><h3>Estado</h3></th>
 					<th><h3>Detalles</h3></th>
-					<th><h3><a href="{% url 'device_app:newDevice'%}" class="btn btn-lg btn-primary ">Nuevo Dispositivo</a></h3></th>
+					<th><h3><a href="{% url 'device_app:newDevice'%}" class="btn btn-lg btn-primary "><span class = "glyphicon glyphicon-cloud"></span> Nuevo Dispositivo</a></h3></th>
 				</tr>
 				</thead>
 				<tbody>
@@ -35,7 +35,13 @@
 					<td>
 						<div class="center-td">
 							<div class="onoffswitch">
-						    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" {{estado}}>
+						<!-- estado del dispositivo -->
+							{%ifequal device.status 'ON'%}	
+						    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" disabled="true" checked>
+						    {%else%}
+						    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" disabled="true">
+						    {%endifequal%}
+						<!-- fin -->
 						    <label class="onoffswitch-label" for="myonoffswitch">
 						        <span class="onoffswitch-inner"></span>
 						        <span class="onoffswitch-switch"></span>
@@ -50,7 +56,7 @@
 					</td>
 					<td>
 						<div class="center-td">	
-							<a href="" class="btn btn-primary ">Ver dispositivo</a>
+							<a href="" class="btn btn-primary ">Ver dispositivo <span class="glyphicon glyphicon-chevron-right"></span></a>
 						</div>
 					</td>
 				</tr>

@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
-from models import Device, Application
+from models import Device, Application, DeviceApp
 from forms import NewDeviceForm, NewUser, LogForm, NewAppForm
 
 # Create your views here.
@@ -92,22 +92,43 @@ def register(request):
 
 # ---------------------------------------------------------------------------------------------------------------------
 # ---------------------------------------------------------------------------------------------------------------------
+@login_required(login_url='device_app:inicio')
 def newDevice(request):
 	if request.method == 'POST':
 		form = NewDeviceForm(request.POST)
 		if form.is_valid():
+			
 			nombre = form.cleaned_data['nombre']
 			tipo = form.cleaned_data['tipo']
 			ip = form.cleaned_data['ip']
-			
+			aplicacion = form.cleaned_data['aplicaciones']
 
-			if not Device.objects.filter(name=nombre):
+			if not Device.objects.filter(name=nombre) and not Device.objects.filter(ip=ip):
 				newDevice = Device(name=nombre,ip=ip,tipo=tipo,status='ON')
 				newDevice.save()
-			
+
+				if aplicacion:
+					newDeviceApp = DeviceApp(device=newDevice,aplication=aplicacion,status='ON')
+					newDeviceApp.save()
+
+				form = NewDeviceForm()
+				context = {
+				'formulario':form,
+				'mensaje':'Dispositivo creado con exito',
+				}
+				return render_to_response('newDevice.html', context, context_instance=RequestContext(request))
+			else:
+				form = NewDeviceForm()
+				context = {
+				'formulario':form,
+				'mensaje':'Nombre o ip de dispositivo ya existente',
+				}
+				return render_to_response('newDevice.html', context, context_instance=RequestContext(request))
+		else:
 			form = NewDeviceForm()
 			context = {
 			'formulario':form,
+			'mensaje':'Registre los datos correctamente',
 			}
 			return render_to_response('newDevice.html', context, context_instance=RequestContext(request))
 	else:
@@ -119,6 +140,7 @@ def newDevice(request):
 
 # ---------------------------------------------------------------------------------------------------------------------
 # ---------------------------------------------------------------------------------------------------------------------
+@login_required(login_url='device_app:inicio')
 def newApplication(request):
 	if request.method == 'POST':
 		form = NewAppForm(request.POST)
@@ -146,7 +168,6 @@ def newApplication(request):
 def devices(request):
 	devices = Device.objects.all()
 	context = {
-	'estado': 'checked',
 	'devices': devices,
 	'user': request.user,
 	}
