@@ -61,3 +61,27 @@ body{
 	position: relative;
 	top: 100px;
 }
+
+/*estilos para template device*/
+.section-device{
+	max-width: 1000px;
+	height: 450px;
+	border-radius: 10px;
+	background: white;
+	margin: 40px auto;
+}
+.section-device .container-fluid , .section-device .row{
+	border: solid 2px black;
+}
+.title-device-head{
+	font-size: 22px;
+		border: solid 2px black;
+}
+.section-device img{
+	width: 100px;
+	height: 100px;
+	display: block;
+	margin: auto auto;
+	position: relative;
+	top: 0px;
+}
