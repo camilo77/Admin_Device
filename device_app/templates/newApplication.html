@@ -4,10 +4,15 @@
 	<link rel="stylesheet" href="/static/misEstilos/estilos2.css" />
 {%endblock%}
 {% block botonIndice %}
-	<label class="usuario-label">Sebastian</label>
-	<button type="button" class="btn btn-default">
+	{% if user.is_authenticated %}
+	<label class="usuario-label">{{user.username}}</label>
+	<a href="{% url 'device_app:logout'%}" class="btn btn-default">
   		<span class="glyphicon glyphicon-chevron-left"></span> Salir
-	</button>
+	</a>
+	{%endif%}
+	<a href="{% url 'device_app:appsDevices'%}" class="btn btn-default ">
+  		<span class="glyphicon glyphicon-chevron"></span> Inicio
+	</a>
 {% endblock %}
 {% block contenido %}
 	<section class="section-register">
@@ -23,6 +28,7 @@
 					</div>
 					<button type="submit" class="btn btn-lg btn-primary btn-block">Enviar</button>
 				</form>
+				<label>{{mensaje}}</label>
 			</div>
 		</div>
 	</section>

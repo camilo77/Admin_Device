@@ -11,6 +11,9 @@
   		<span class="glyphicon glyphicon-chevron-left"></span> Salir
 	</a>
 	{%endif%}
+	<a href="{% url 'device_app:appsDevices'%}" class="btn btn-default ">
+  		<span class="glyphicon glyphicon-chevron"></span> Inicio
+	</a>
 {% endblock %}
 {% block contenido %}
 	<section class="section-register section-devices">
@@ -51,7 +54,7 @@
 					</td>
 					<td>
 						<div class="center-td">
-							<h4><a>Detalles</a></h4>
+							<h4><a href="{% url 'device_app:detailsDevice' device.id device.name %}">Detalles</a></h4>
 						</div>
 					</td>
 					<td>

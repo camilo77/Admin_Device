@@ -15,8 +15,14 @@ urlpatterns = patterns('',
 	url(r'^newApplication/$', 'device_app.views.newApplication', name="newApplication"),
 	# mostrar dispositivos
 	url(r'^devices/$', 'device_app.views.devices', name="devices"),
+	# mostrar aplicaciones
+	url(r'^applications/$', 'device_app.views.applications', name="applications"),
 	# logout
 	url(r'^logout/$', 'device_app.views.logOut', name='logout'),
 	# dispositivo
 	url(r'^device/id/(?P<id>\d+)/(.+)$', 'device_app.views.device' , name="device"),
+	# detalles Devices
+	url(r'^detailsDevice/id/(?P<id>\d+)/(.+)$', 'device_app.views.detailsDevice' , name="detailsDevice"),
+	# detalles Apps
+	url(r'^detailsApps/id/(?P<id>\d+)/(.+)$', 'device_app.views.detailsApps' , name="detailsApps"),
 	)

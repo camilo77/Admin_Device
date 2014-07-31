@@ -1,12 +1,22 @@
 body{
 	background: #C7C7C8;
 }
+
 .section-register{
 	max-width: 800px;
 	margin: 40px auto;
 	padding: 10px;
 	background: white;
 	border-radius: 10px;
+}
+.section-register-appsDevices{
+	max-width: 1100px;
+	height: auto;
+	margin: 40px auto;
+	padding: 0px;
+	background: white;
+	border-radius: 70px;
+	text-align: center;
 }
 .titulo-register{
 	max-width: 400px;
@@ -44,6 +54,9 @@ body{
 	position: relative;
 	top: 0px;
 }
+.table-device-appsDevices{
+	border-radius: 100px;
+}
 .center-td{
 	position: relative;
 	margin: auto;
@@ -62,7 +75,6 @@ body{
 	max-height: 450px;
 }
 .table-device thead{
-	
 	z-index: 1;
 }
 .table-device tbody{
@@ -73,7 +85,7 @@ body{
 	position: relative;
 	top: 300px;
 }
-.table-application tbody{
+table-application tbody{
 	position: relative;
 	top: 100px;
 }
@@ -96,11 +108,12 @@ body{
 	margin: 40px auto;
 }
 .section-device .container-fluid , .section-device .row{
-	
+
+}
 }
 .title-device-head{
 	font-size: 22px;
-		
+
 }
 .section-device img{
 	width: 100px;
@@ -117,4 +130,54 @@ body{
 /*iiiiiiiiiiiiiiiii*/
 .button-appsDevices{
 	border-radius: 100px;
+}
+
+.table-device-appsDevices tbody{
+	text-align: center;
+}
+
+.span a{
+  	font-family: comic sans ms; 
+  	font-size: 25px;
+}
+
+.span{
+	position:relative;
+  	top:30px;
+}
+
+.span2{
+	position:relative;
+  	top:-30px;
+  	text-align: 25%;
+}
+
+.span2 a{
+  	font-family: comic sans ms; 
+  	font-size: 25px;
+}
+
+.btnVolver{
+	float: right;
+	position:absolute; 
+	top:150px; 
+	right:110px;
+
+}
+.label-details{
+	top left;
+}
+.details p {
+    color:gray;
+    font-size: 50px;
+    text-align: center;
+    margin: 4px 0 13px;
+}
+.details img{
+	width: 200px;
+	height: 200px;
+	display: block;
+	margin: auto auto;
+	position: relative;
+	top: 0px;
 }

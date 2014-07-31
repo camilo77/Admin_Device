@@ -25,7 +25,7 @@ def inicio(request):
 			if user is not None:
 				if user.is_active:
 					login(request, user)
-					return HttpResponseRedirect(reverse('device_app:devices'),request)
+					return HttpResponseRedirect(reverse('device_app:appsDevices'),request)
 				else:
 					return HttpResponseRedirect(reverse('device_app:inicio'))
 			else:
@@ -146,19 +146,21 @@ def newApplication(request):
 		form = NewAppForm(request.POST)
 		if form.is_valid():
 			nombre = form.cleaned_data['nombre']
-
+			nombre = nombre.lower()
 			if not Application.objects.filter(name = nombre):
 				newApplication = Application(name=nombre)
 				newApplication.save()
 			form = NewAppForm()
 			context = {
 			'formulario':form,
+			'mensaje':'Aplicaion creada con exito',
 			}
 			return render_to_response('newApplication.html', context, context_instance=RequestContext(request))
 	else:
 		form = NewAppForm()
 		context = {
 		'formulario':form,
+		'mensaje':'Registre los datos correctamente',
 		}
 		return render_to_response('newApplication.html',context,context_instance=RequestContext(request))
 
@@ -186,12 +188,45 @@ def devices(request):
 	}
 	return render_to_response('devices.html',context)
 
+# ---------------------------------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------------------------
+@login_required(login_url='device_app:inicio')
+def applications(request):
+	applications = Application.objects.all()
+	context = {
+	'applications': applications,
+	'user': request.user,
+	}
+	return render_to_response('applications.html',context)
 
+# ---------------------------------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------------------------
 def device(request,id):
 	dispositivo = Device.objects.filter(id=id)[0]
 	aplicaciones = DeviceApp.objects.filter(device=dispositivo)
 	context = {
 	'device':dispositivo,
 	'apps':aplicaciones,
+	'user': request.user,
 	}
 	return render_to_response('device.html',context)
+
+# ---------------------------------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------------------------
+def detailsDevice(request,id):
+	dispositivo = Device.objects.filter(id=id)[0]
+	context = {
+	'device':dispositivo,
+	'user': request.user,
+	}
+	return render_to_response('detailsDevice.html',context)
+
+# ---------------------------------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------------------------
+def detailsApps(request,id):
+	app = Application.objects.filter(id=id)[0]
+	context = {
+	'app':app,
+	'user': request.user,
+	}
+	return render_to_response('detailsApps.html',context)

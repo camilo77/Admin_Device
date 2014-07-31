@@ -1,0 +1,114 @@
+/*Dimensiones de la lista*/
+ul {
+    height: auto;
+    width: auto;
+    /*
+    perspective: 500px;
+    -webkit-perspective: 500px;
+    -moz-perspective: 500px;
+    -ms-perspective: 500px;
+    -o-perspective: 500px;
+    */
+}
+
+
+/*Aplicamos color a los item de la lista que serán las cajas, 
+los mostramos uno al lado del otro con inline-block, margin 
+y box-sizing, aplicamos una transformación en el eje Y de 45º 
+y una transición para dar la elegancia al evento cada propiedad 
+con sus prefijos de autores, por si algo pasa e igual le damos 
+un alto a las cajas y padding.*/
+ul li {
+    background-color: white;
+    display: inline-block;
+    margin-right:2px;
+    margin-left:2px;
+    height: auto;
+    text-align: center;
+    transform: rotateY(45deg);
+    -webkit-transform: rotateY(45deg);
+    -moz-transform: rotateY(45deg);
+    -o-transform: rotateY(45deg);
+    transition: all ease .5s;
+    -webkit-transition: all ease .5s;
+    -moz-transition: all ease .5s;
+    -o-transition: all ease .5s;
+    padding: 15px;
+    position: relative;
+    width: 120px;
+    z-index: 100;
+}
+
+/*Estilos para el párrafo que esta dentro de las cajas.*/
+li p {
+    color:black;
+    font-size: 15px;
+    margin: 4px 0 13px;
+}
+
+/*Estilos para el botón que lleva a los detalles del device,  
+aplicamos el fondo del botón en el estado inactivo y otras opciones 
+para lograr la apariencia de botones en Css, por ultimo aplicamos 
+una transición al color de fondo para cuando cambie de estado  y 
+aplicamos los estilos para el estado hover.*/
+ul li a.boton {
+  background-color: #0099CC;
+  border-radius: 4px 4px 4px 4px;
+  color: #FFFFFF;
+  font-size: 1em;
+  padding: 0.5em;
+  right: 5px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 1s ease 0s;
+  -webkit-transition: background-color 1s ease 0s;
+  -moz-transition: background-color 1s ease 0s;
+  -o-transition: background-color 1s ease 0s;
+}
+ul li a.boton:hover {
+  color: #222222;
+}
+
+
+/*Damos un ancho a la imagen que se encuentra dentro de 
+la caja y la altura será relativa a su anchura*/
+ul li img {
+    height: 80px !important;
+    width: 110px !important;
+}
+
+
+/*Ahora nos referimos a los ítems de la lista y su comportamiento 
+tanto en el estado pasivo como en el hover, utilizamos la pseudo 
+class nth-child, first-child, last-child para aplicar las rotaciones 
+y posiciones adecuada, también aplicamos estilos al botón que tenemos como enlace.*/
+
+
+ul li:last-child,  ul li:first-child {
+    z-index: 45;
+}
+
+ul:hover li:not(:hover) {
+    background-color: white;
+    transform: rotateY(45deg);
+    -webkit-transform: rotateY(45deg);
+    -o-transform: rotateY(45deg);
+    -moz-transform: rotateY(45deg);
+    -ms-transform: rotateY(45deg);
+}
+ul:hover li a.boton {
+    background-color: #222222;
+}
+ul li:hover{
+     background-color: white;
+     transform: rotateY(0) scale(1.22);
+     -webkit-transform: rotateY(0) scale(1.22);
+     -moz-transform: rotateY(0) scale(1.22);
+     -ms-transform: rotateY(0) scale(1.22);
+     -o-transform: rotateY(0) scale(1.22);
+     z-index: 60;
+
+}
+ul:hover li:hover a.boton {
+    background-color: #0099CC;
+}

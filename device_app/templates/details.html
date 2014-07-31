@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Dispositivo{% endblock %}
+{% block title %}Details{% endblock %}
 {%block head %}
 	<link rel="stylesheet" href="/static/misEstilos/estilos2.css" />
 	<link rel="stylesheet" href="/static/misEstilos/estiloBotonEstado.css" />
@@ -23,11 +23,12 @@
 				<label class="title-device-head">Dispositivo</label>
 			</div>
 			<div class="col-md-8">
-				<label class="title-device-head">Aplicaciones</label>
+				<label class="title-device-head">Details</label>
 			</div>	
 		</div>
 		<div class="row">
 			<div class="col-md-4">
+				<br><br><br>
 				{{device.name}}
 				<img src="/static/images/{{device.tipo}}" class="img-circle">
 			</div>
