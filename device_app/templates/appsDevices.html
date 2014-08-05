@@ -6,6 +6,9 @@
 {%endblock%}
 {% block botonIndice %}
 	{% if user.is_authenticated %}
+	<a href="{% url 'device_app:installApp' %}" class="btn btn-default">
+  		<span class="glyphicon glyphicon-ok"></span> Instalar App
+	</a>
 	<label class="usuario-label">{{user.username}}</label>
 	<a href="{% url 'device_app:logout'%}" class="btn btn-default">
   		<span class="glyphicon glyphicon-chevron-left"></span> Salir

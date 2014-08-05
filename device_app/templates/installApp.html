@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}Pagina Principal{% endblock %}
+{%block head %}
+	<link rel="stylesheet" href="/static/misEstilos/estilos2.css" />
+	<link rel="stylesheet" href="/static/misEstilos/estiloBotonEstado.css" />
+{%endblock%}
+{% block botonIndice %}
+	{% if user.is_authenticated %}
+	<label class="usuario-label">{{user.username}}</label>
+	<a href="{% url 'device_app:logout'%}" class="btn btn-default">
+  		<span class="glyphicon glyphicon-chevron-left"></span> Salir
+	</a>
+	<a href="{% url 'device_app:appsDevices'%}" class="btn btn-default ">
+  		<span class="glyphicon glyphicon-chevron"></span> Inicio
+	</a>
+	{%endif%}
+{% endblock %}
+{% block contenido%}
+<div class="section-register-appsDevices">
+	<br><br><br>
+	<table class="table table-striped">
+		<td><h1>Applications</h1></td>
+		<tr>
+		<form action="{% url 'device_app:buscarApp' %}" method='GET'>{% csrf_token %}
+			<td>
+				<div class="buscar">
+    				<div class="input-group">
+      					<input type="text" name="buscar" class="form-control">
+      					<span class="input-group-btn">
+      						<button type="submit" class="btn btn-primary ">
+					  			<span class="glyphicon glyphicon-search"></span> Buscar
+							</button>	
+      					</span>	      		
+    				</div>
+  				</div>
+			</td>
+		</form>
+		</tr>
+	<br>
+	</table>
+	<div class="table-device-appsDevices apss-install">
+		{% if applications %}
+		<ul>
+			{%for app in applications%}
+				<li><a href="{% url 'device_app:installApp2' app.id app.name %}" >
+					<p><img src="/static/images/apps/{{app.name}}.jpg">
+					<p><h3><label>{{app.name}}</label></h3>
+					</a>
+				</li>
+			{% endfor %}
+			</ul>
+		{% endif%}
+	</div>
+	<div class="span">
+		<a href="{% url 'device_app:newApplication'%}" class="btn btn-lg btn-primary "><span class = "glyphicon glyphicon-cloud"></span> Nueva Applicacion</a>
+	</div>
+</div>
+{% endblock %}

@@ -27,4 +27,10 @@ urlpatterns = patterns('',
 	url(r'^detailsDevice/id/(?P<id>\d+)/(.+)$', 'device_app.views.detailsDevice' , name="detailsDevice"),
 	# detalles Apps
 	url(r'^detailsApps/id/(?P<id>\d+)/(.+)$', 'device_app.views.detailsApps' , name="detailsApps"),
+	# instalar Apps
+	url(r'^installApp/$', 'device_app.views.installApp' , name="installApp"),
+	# instalar Apps - especifica
+	url(r'^installApp2/id/(?P<id>\d+)/(.+)$', 'device_app.views.installApp2' , name="installApp2"),
+	# buscar
+	url(r'^buscarApp/$', 'device_app.views.buscarApp' , name="buscarApp"),
 	)

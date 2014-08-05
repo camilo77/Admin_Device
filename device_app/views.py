@@ -242,3 +242,42 @@ def detailsApps(request,id):
 	'user': request.user,
 	}
 	return render_to_response('detailsApps.html',context)
+
+# ---------------------------------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------------------------
+def buscarApp(request):
+	#NO FUNCIONA CON POST
+	if request.method == 'POST':
+		return render(request, 'appsDevices.html', {})
+
+	nombre = request.GET['buscar']
+	aplicaciones = Application.objects.filter(name__contains=nombre)
+
+	context = {
+	'applications': aplicaciones,
+	'user': request.user,
+	}
+	return render_to_response('installApp.html', context)
+
+# ---------------------------------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------------------------
+@login_required(login_url='device_app:inicio')
+def installApp(request):
+	applications = Application.objects.all()
+	context = {
+	'applications': applications,
+	'user': request.user,
+	}
+	return render_to_response('installApp.html', context)
+
+# ---------------------------------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------------------------
+def installApp2(request,id):
+	app = Application.objects.filter(id=id)[0]
+	devices = Device.objects.all()
+	context = {
+	'app':app,
+	'devices': devices,
+	'user': request.user,
+	}
+	return render_to_response('installApp2.html',context)

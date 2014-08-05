@@ -191,3 +191,18 @@ table-application tbody{
 	position: relative;
 	top: 0px;
 }
+.buscar{
+	width: auto;
+}
+.boton-instalar a {
+	font-size: 20px;
+}
+
+.select-instal{
+	max-width: 400px;
+	margin: 40px auto;
+}
+.select-instal img{
+	width: 1px;
+	height: 1px;
+}
