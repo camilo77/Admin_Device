@@ -21,6 +21,8 @@ urlpatterns = patterns('',
 	url(r'^logout/$', 'device_app.views.logOut', name='logout'),
 	# dispositivo
 	url(r'^device/id/(?P<id>\d+)/(.+)$', 'device_app.views.device' , name="device"),
+	# Aplicacion
+	url(r'^app/id/(?P<id>\d+)/(.+)$', 'device_app.views.app' , name="app"),
 	# detalles Devices
 	url(r'^detailsDevice/id/(?P<id>\d+)/(.+)$', 'device_app.views.detailsDevice' , name="detailsDevice"),
 	# detalles Apps

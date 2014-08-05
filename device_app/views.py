@@ -213,6 +213,18 @@ def device(request,id):
 
 # ---------------------------------------------------------------------------------------------------------------------
 # ---------------------------------------------------------------------------------------------------------------------
+def app(request,id):
+	aplicacion = Application.objects.filter(id=id)[0]
+	dispositivos = DeviceApp.objects.filter(aplication=aplicacion)
+	context = {
+	'app':aplicacion,
+	'devices':dispositivos,
+	'user': request.user,
+	}
+	return render_to_response('app.html',context)
+
+# ---------------------------------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------------------------
 def detailsDevice(request,id):
 	dispositivo = Device.objects.filter(id=id)[0]
 	context = {

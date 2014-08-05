@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Dispositivo{% endblock %}
+{% block title %}Aplicacion{% endblock %}
 {%block head %}
 	<link rel="stylesheet" href="/static/misEstilos/estilos2.css" />
 	<link rel="stylesheet" href="/static/misEstilos/estiloBotonEstado.css" />
@@ -20,24 +20,24 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-4">
-				<h1><label class="title-device-head">Dispositivo</label></h1>
+				<h1><label class="title-device-head">Aplicacion</label></h1>
 			</div>
 			<div class="col-md-8">
-				<h1><label class="title-device-head">Aplicaciones</label></h1>
+				<h1><label class="title-device-head">Dispositivos</label></h1>
 			</div>	
 		</div>
 		<div class="row">
 			<div class="col-md-4 details">
 				<br>
-				<img src="/static/images/{{device.tipo}}">
-				<p>{{device.name}}</p>
+				<img src="/static/images/apps/{{app.name}}.jpg">
+				<p>{{app.name}}</p>
 			</div>
 			<div class="col-md-8 details2">
 				<table class="table table-striped table-device">
 					<thead>
 					<tr></tr>
 					<tr>
-						<th><h3>Aplicaciones</h3></th>
+						<th><h3>Dispositivos</h3></th>
 						<th><h3>Estado</h3></th>
 						<th><h3>Detalles</h3></th>
 					</tr>
@@ -46,18 +46,18 @@
 				<div class="table-device-appsDevices">
 				<table class="table table-striped table-device">
 					<tbody>
-					{% if apps %}
-					{%for aplicacion in apps%}
+					{% if devices %}
+					{%for dispositivo in devices%}
 					<tr>
 						<td>
-							<img  src="/static/images/apps/{{aplicacion.aplication.name}}.jpg" class="img-circle img-app">
-							<label>{{aplicacion.aplication.name}}</label>
+							<img  src="/static/images/{{dispositivo.device.tipo}}" class="img-circle img-app">
+							<label>{{dispositivo.device.name}}</label>
 						</td>
 						<td>
 							<div class="center-td">
 								<div class="onoffswitch">
 							<!-- estado del dispositivo -->
-								{%ifequal aplicacion.status 'ON'%}	
+								{%ifequal dispositivo.device.status 'ON'%}	
 							    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" disabled="true" checked>
 							    {%else%}
 							    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" disabled="true">
@@ -72,7 +72,7 @@
 						</td>
 						<td>
 							<div class="center-td">
-								<h4><a href="{% url 'device_app:detailsApps' aplicacion.aplication.id aplicacion.aplication.name %}">Detalles</a></h4>
+								<h4><a href="{% url 'device_app:detailsDevice' dispositivo.device.id dispositivo.device.name %}">Detalles</a></h4>
 							</div>
 						</td>
 					</tr>
