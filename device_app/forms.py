@@ -26,3 +26,8 @@ class LogForm(forms.Form):
 
 class NewAppForm(forms.Form):
 	nombre = forms.CharField()
+
+class installAppForm(forms.Form):
+	dispositivo = forms.CharField()
+	aplicacion = forms.CharField()
+	estado = forms.CharField()

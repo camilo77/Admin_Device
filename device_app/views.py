@@ -9,7 +9,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 from models import Device, Application, DeviceApp
-from forms import NewDeviceForm, NewUser, LogForm, NewAppForm
+from forms import NewDeviceForm, NewUser, LogForm, NewAppForm, installAppForm
 
 # Create your views here.
 # ---------------------------------------------------------------------------------------------------------------------
@@ -251,24 +251,34 @@ def buscarApp(request):
 		return render(request, 'appsDevices.html', {})
 
 	nombre = request.GET['buscar']
-	aplicaciones = Application.objects.filter(name__contains=nombre)
+	if Application.objects.filter(name__contains=nombre):
+		aplicaciones = Application.objects.filter(name__contains=nombre)
 
-	context = {
-	'applications': aplicaciones,
-	'user': request.user,
-	}
-	return render_to_response('installApp.html', context)
+		context = {
+		'applications': aplicaciones,
+		'user': request.user,
+		'mensaje': 'Coincidencias con '+nombre
+		}
+		return render_to_response('installApp.html', context)
+	else:
+		context = {
+		'user': request.user,
+		'mensaje': 'No se encontro ninguna Aplicacion con nombre '+nombre
+		}
+		return render_to_response('installApp.html', context)
+
 
 # ---------------------------------------------------------------------------------------------------------------------
 # ---------------------------------------------------------------------------------------------------------------------
 @login_required(login_url='device_app:inicio')
-def installApp(request):
+def installAppInicio(request):
 	applications = Application.objects.all()
 	context = {
 	'applications': applications,
 	'user': request.user,
 	}
 	return render_to_response('installApp.html', context)
+
 
 # ---------------------------------------------------------------------------------------------------------------------
 # ---------------------------------------------------------------------------------------------------------------------
@@ -281,3 +291,31 @@ def installApp2(request,id):
 	'user': request.user,
 	}
 	return render_to_response('installApp2.html',context)
+
+# ---------------------------------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------------------------
+def installedApp(request):
+	if request.method == 'GET':
+		form = installAppForm(request.POST)
+		if form.is_valid():
+			
+			dispositivo = form.cleaned_data['dispositivo']
+			aplicacion = form.cleaned_data['aplicacion']
+			estado = OFF
+
+			newDeviceApp = DeviceApp(dispositivo, aplicacion, estado)
+			newDeviceApp.save()
+
+			print newDeviceApp.nombre
+
+			context = {
+				'formulario':form,
+				'mensaje':'Aplicacion Instalada Correctamente',
+			}
+			return render_to_response('installedApp.html', context, context_instance=RequestContext(request))
+	else:
+		context = {
+		'formulario':form,
+		'mensaje':'Aplicacion Instalada Correctamente',
+		}
+		return render_to_response('installedApp.html', context, context_instance=RequestContext(request))

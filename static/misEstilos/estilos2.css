@@ -194,10 +194,12 @@ table-application tbody{
 .buscar{
 	width: auto;
 }
-.boton-instalar a {
+.boton-instalar a{
 	font-size: 20px;
 }
-
+.boton-instalar button{
+	font-size: 20px;
+}
 .select-instal{
 	max-width: 400px;
 	margin: 40px auto;
