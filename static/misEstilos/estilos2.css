@@ -183,3 +183,11 @@ table-application tbody{
 	position: relative;
 	top: 0px;
 }
+.details2 img{
+	width: 100px;
+	height: 100px;
+	display: block;
+	margin: auto auto;
+	position: relative;
+	top: 0px;
+}
