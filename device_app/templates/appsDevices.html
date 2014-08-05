@@ -18,9 +18,11 @@
 		<div class="span2">
 			<h1><a href="{% url 'device_app:devices'%}" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-th"></span> Todos los Dispositivos</a></h1>
 		</div>
-		<table class="table table-striped table-device-appsDevices">			
-				<td><h1>Devices</h1></td>			
-			<tr><td>
+		<table class="table table-striped">
+			<tr><td><h1>Devices</h1></td></tr>
+			<tr><td></td></tr>
+		</table>
+		<div class="table-device-appsDevices">						
 			{% if devices %}
 				<ul>
 				{%for device in devices%}
@@ -32,8 +34,7 @@
 				{% endfor %}
 				</ul>
 			{% endif%}
-			</td></tr>
-		</table>
+		</div>
 		<div class="span">
 			<h1><a href="{% url 'device_app:newDevice'%}" class="btn btn-lg btn-primary "><span class = "glyphicon glyphicon-cloud"></span> Nuevo Dispositivo</a></h1>
 		</div>
@@ -45,9 +46,11 @@
 		<div class="span2">
 			<h1><a href="{% url 'device_app:applications'%}" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-th"></span> Todas las Aplicaciones</a></h1>
 		</div>
-		<table class="table table-striped table-device-appsDevices">
+		<table class="table table-striped">
 			<td><h1>Applications</h1></td>
 			<tr><td><br>
+		</table>
+		<div class="table-device-appsDevices">
 			{% if applications %}
 				<ul>
 				{%for app in applications%}
@@ -58,9 +61,8 @@
 					</li>
 				{% endfor %}
 				</ul>
-			</td></tr>
 			{% endif%}
-		</table>
+		</div>
 		<div class="span">
 			<a href="{% url 'device_app:newApplication'%}" class="btn btn-lg btn-primary "><span class = "glyphicon glyphicon-cloud"></span> Nueva Applicacion</a>
 		</div>

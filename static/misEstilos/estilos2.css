@@ -55,6 +55,8 @@ body{
 	top: 0px;
 }
 .table-device-appsDevices{
+	overflow: auto;
+	max-height: 210px;
 	border-radius: 100px;
 }
 .center-td{
