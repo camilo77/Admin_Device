@@ -29,5 +29,4 @@ class NewAppForm(forms.Form):
 
 class installAppForm(forms.Form):
 	dispositivo = forms.CharField()
-	aplicacion = forms.CharField()
-	estado = forms.CharField()
+	

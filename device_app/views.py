@@ -283,39 +283,32 @@ def installAppInicio(request):
 # ---------------------------------------------------------------------------------------------------------------------
 # ---------------------------------------------------------------------------------------------------------------------
 def installApp2(request,id):
-	app = Application.objects.filter(id=id)[0]
-	devices = Device.objects.all()
-	context = {
-	'app':app,
-	'devices': devices,
-	'user': request.user,
-	}
-	return render_to_response('installApp2.html',context)
-
-# ---------------------------------------------------------------------------------------------------------------------
-# ---------------------------------------------------------------------------------------------------------------------
-def installedApp(request):
-	if request.method == 'GET':
+	if request.method == 'POST':
 		form = installAppForm(request.POST)
 		if form.is_valid():
 			
-			dispositivo = form.cleaned_data['dispositivo']
-			aplicacion = form.cleaned_data['aplicacion']
-			estado = OFF
+			nameDispositivo = form.cleaned_data['dispositivo']
+			aplicacion = Application.objects.filter(id=id)[0]
 
-			newDeviceApp = DeviceApp(dispositivo, aplicacion, estado)
+			device = Device.objects.filter(name=nameDispositivo)[0]
+
+			newDeviceApp = DeviceApp(device=device,aplication=aplicacion,status='OFF')
 			newDeviceApp.save()
 
-			print newDeviceApp.nombre
-
+			app = Application.objects.filter(id=id)[0]
+			devices = Device.objects.all()
 			context = {
-				'formulario':form,
-				'mensaje':'Aplicacion Instalada Correctamente',
+			'app':app,
+			'devices': devices,
+			'user': request.user,
 			}
-			return render_to_response('installedApp.html', context, context_instance=RequestContext(request))
+			return render_to_response('installApp2.html',context, context_instance=RequestContext(request))
 	else:
+		app = Application.objects.filter(id=id)[0]
+		devices = Device.objects.all()
 		context = {
-		'formulario':form,
-		'mensaje':'Aplicacion Instalada Correctamente',
+		'app':app,
+		'devices': devices,
+		'user': request.user,
 		}
-		return render_to_response('installedApp.html', context, context_instance=RequestContext(request))
+		return render_to_response('installApp2.html',context, context_instance=RequestContext(request))
