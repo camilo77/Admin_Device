@@ -246,26 +246,25 @@ def detailsApps(request,id):
 # ---------------------------------------------------------------------------------------------------------------------
 # ---------------------------------------------------------------------------------------------------------------------
 def buscarApp(request):
-	#NO FUNCIONA CON POST
 	if request.method == 'POST':
-		return render(request, 'appsDevices.html', {})
+		nombre = request.POST['buscar']
+		if Application.objects.filter(name__contains=nombre):
+			aplicaciones = Application.objects.filter(name__contains=nombre)
 
-	nombre = request.GET['buscar']
-	if Application.objects.filter(name__contains=nombre):
-		aplicaciones = Application.objects.filter(name__contains=nombre)
-
-		context = {
-		'applications': aplicaciones,
-		'user': request.user,
-		'mensaje': 'Coincidencias con '+nombre
-		}
-		return render_to_response('installApp.html', context)
-	else:
-		context = {
-		'user': request.user,
-		'mensaje': 'No se encontro ninguna Aplicacion con nombre '+nombre
-		}
-		return render_to_response('installApp.html', context)
+			context = {
+			'applications': aplicaciones,
+			'user': request.user,
+			'mensaje': 'Coincidencias con '+ '"'+nombre+'"'
+			}
+			return render_to_response('installApp.html', context, context_instance=RequestContext(request))
+		else:
+			aplicaciones = Application.objects.filter(name__contains=nombre)
+			context = {
+			'applications': aplicaciones,
+			'user': request.user,
+			'mensaje': 'No se encontro ninguna Aplicacion con nombre '+ '"'+nombre+'"'
+			}
+			return render_to_response('installApp.html', context, context_instance=RequestContext(request))
 
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -277,7 +276,7 @@ def installAppInicio(request):
 	'applications': applications,
 	'user': request.user,
 	}
-	return render_to_response('installApp.html', context)
+	return render_to_response('installApp.html', context, context_instance=RequestContext(request))
 
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -286,23 +285,34 @@ def installApp2(request,id):
 	if request.method == 'POST':
 		form = installAppForm(request.POST)
 		if form.is_valid():
-			
+
 			nameDispositivo = form.cleaned_data['dispositivo']
 			aplicacion = Application.objects.filter(id=id)[0]
-
 			device = Device.objects.filter(name=nameDispositivo)[0]
 
 			newDeviceApp = DeviceApp(device=device,aplication=aplicacion,status='OFF')
-			newDeviceApp.save()
 
-			app = Application.objects.filter(id=id)[0]
-			devices = Device.objects.all()
-			context = {
-			'app':app,
-			'devices': devices,
-			'user': request.user,
-			}
-			return render_to_response('installApp2.html',context, context_instance=RequestContext(request))
+			if not DeviceApp.objects.filter(device=device, aplication=aplicacion):
+				newDeviceApp.save()
+				app = Application.objects.filter(id=id)[0]
+				devices = Device.objects.all()
+				context = {
+				'app':app,
+				'devices': devices,
+				'user': request.user,
+				'mensaje': 'Aplicacion "'+aplicacion.name+'" instalada exitosamente en Dispositivo: "'+nameDispositivo+'"'
+				}
+				return render_to_response('installApp2.html',context, context_instance=RequestContext(request))
+			else:
+				app = Application.objects.all()
+				devices = Device.objects.all()
+				context = {
+				'applications':app,
+				'devices': devices,
+				'user': request.user,
+				'mensaje': 'Aplicacion "'+aplicacion.name+'" ya esta instalada en Dispositivo: "'+nameDispositivo+'"'
+				}
+				return render_to_response('installApp.html', context, context_instance=RequestContext(request))
 	else:
 		app = Application.objects.filter(id=id)[0]
 		devices = Device.objects.all()

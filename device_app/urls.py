@@ -30,9 +30,7 @@ urlpatterns = patterns('',
 	# instalar Apps
 	url(r'^installAppInicio/$', 'device_app.views.installAppInicio' , name="installAppInicio"),
 	# instalar Apps - especifica
-	url(r'^installApp2/id/(?P<id>\d+)/(.+)$', 'device_app.views.installApp2' , name="installApp2"),
-	# App instalada
-	
+	url(r'^installApp2/id/(?P<id>\d+)/(.+)$', 'device_app.views.installApp2' , name="installApp2"),	
 	# buscar
 	url(r'^buscarApp/$', 'device_app.views.buscarApp' , name="buscarApp"),
 	)

@@ -37,7 +37,7 @@
 					<tr>
 						<h3>
 							<span class="label label-info">Nombre de Aplicacion:</span>
-							<span class="label label-default" name='{{app.name}}'>{{app.name}}</span>
+							<span class="label label-default">{{app.name}}</span>
 						</h3>
 					</tr>
 					<br>
@@ -45,7 +45,7 @@
 						<h3>Seleccione un Dispositivo</h3>
 					</tr>
 
-					<form action="{% url 'device_app:installApp2' app.id app.name%}" method='POST'>{% csrf_token %}
+					<form action="{% url 'device_app:installApp2' app.id app.name %}" method='POST'>{% csrf_token %}
 						<div class="select-instal">
 							<select class="form-control" name="dispositivo">
 									{% if devices %}
@@ -69,7 +69,7 @@
 						</div>
 					</form>
 				</table>
-
+				<h4>{{mensaje}}</h4>
 			</div>
 		</div>
 		

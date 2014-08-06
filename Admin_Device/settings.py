@@ -60,10 +60,25 @@ WSGI_APPLICATION = 'Admin_Device.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
+# BASE DE DATOS sqlite3
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+'''
+
+# BASE DE DATOS postgreSQL
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'admin_device',
+        'USER': 'postgres',
+        'PASSWORD': 'julian',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 

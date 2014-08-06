@@ -20,21 +20,22 @@
 	<br><br><br>	
 	<table class="table table-striped">
 		<td><h1>Applications</h1></td>
+		<tr><h4>{{mensaje}}</h4></tr>
 		<tr>
-		<form action="{% url 'device_app:buscarApp' %}" method='GET'>{% csrf_token %}
-			<td>
-				<div class="buscar">
-    				<div class="input-group">
-      					<input type="text" name="buscar" class="form-control">
-      					<span class="input-group-btn">
-      						<button type="submit" class="btn btn-primary ">
-					  			<span class="glyphicon glyphicon-search"></span> Buscar
-							</button>	
-      					</span>	      		
-    				</div>
-  				</div>
-			</td>
-		</form>
+			<form action="{% url 'device_app:buscarApp' %}" method='POST'>{% csrf_token %}
+				<td>
+					<div class="buscar">
+	    				<div class="input-group">
+	      					<input type="text" name="buscar" class="form-control">
+	      					<span class="input-group-btn">
+	      						<button type="submit" class="btn btn-primary ">
+						  			<span class="glyphicon glyphicon-search"></span> Buscar
+								</button>	
+	      					</span>	      		
+	    				</div>
+	  				</div>
+				</td>
+			</form>
 		</tr>
 	<br>
 	</table>
@@ -50,7 +51,6 @@
 			{% endfor %}
 			</ul>
 		{% endif%}
-		<h4>{{mensaje}}</h4>
 	</div>
 	<div class="span">
 		<a href="{% url 'device_app:newApplication'%}" class="btn btn-lg btn-primary "><span class = "glyphicon glyphicon-cloud"></span> Nueva Applicacion</a>
